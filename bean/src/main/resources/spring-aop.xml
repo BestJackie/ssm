@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+<bean id="roleXmlAspct" class="spring.aop.xml.demo.RoleXmlAspect"/>
+    <bean id="roleService" class="spring.aop.xml.demo.RoleServiceImpl"></bean>
+    <aop:config>
+        <aop:aspect ref="roleXmlAspct">
+            <aop:pointcut id="printRole" expression="execution(* spring.aop.xml.demo.RoleServiceImpl.printRole(..))"/>
+            <aop:before method="before" pointcut-ref="printRole"></aop:before>
+            <aop:after method="after" pointcut-ref="printRole"></aop:after>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="printRole"></aop:after-throwing>
+            <aop:after-returning method="afterReturning" pointcut-ref="printRole"></aop:after-returning>
+            <aop:around method="around" pointcut-ref="printRole"></aop:around>
+            <aop:declare-parents types-matching="spring.aop.xml.demo.RoleServiceImpl+" implement-interface="spring.aop.xml.demo.RoleVerifier"
+                                 default-impl="spring.aop.xml.demo.RoleVerifierImpl"/>
+        </aop:aspect>
+    </aop:config>
+
+
+
+
+</beans>
