@@ -5,6 +5,7 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -51,15 +52,15 @@ public class JavaTxConfig implements TransactionManagementConfigurer {
     }
     @Bean
     public JdbcTemplate jdbcTemplate(){
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
-        return jdbcTemplate;
+        return new JdbcTemplate(dataSource());
+
     }
 
     @Bean
+    @Primary
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager(){
-        PlatformTransactionManager platformTransactionManager = new DataSourceTransactionManager(dataSource());
-        return platformTransactionManager;
+        return new DataSourceTransactionManager(dataSource());
     }
 
 
