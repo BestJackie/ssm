@@ -10,10 +10,10 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
     <typeAliases>
-        <typeAlias alias="role" type="ssm.jc.pojo.Role"/>
+        <package name="ssm.jc.pojo"/>
     </typeAliases>
     <mappers>
-        <mapper resource="mapper/RoleMapper.xml"/>
+        <package name="ssm.jc.dao"/>
     </mappers>
 
 </configuration>

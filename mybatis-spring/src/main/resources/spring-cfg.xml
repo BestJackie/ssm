@@ -32,7 +32,7 @@
         <property name="testOnBorrow" value="false" />
         <property name="testOnReturn" value="false" />
         <property name="connectionProperties"
-                  value="druid.stat.slowSqlMillis=3000;v$session.program=kcb-account" />
+                  value="druid.stat.slowSqlMillis=3000;v$session.program=jc-haichaoyang" />
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

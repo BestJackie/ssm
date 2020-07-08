@@ -2,11 +2,11 @@ package ssm.jc.tx;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
+import ssm.jc.pojo.Role;
+import ssm.jc.service.RoleListService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * FileName: ProgramTx
@@ -20,7 +20,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 public class ProgramTx {
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-cfg.xml");
-        PlatformTransactionManager tm = ctx.getBean(PlatformTransactionManager.class);
+      /*  PlatformTransactionManager tm = ctx.getBean(PlatformTransactionManager.class);
         JdbcTemplate template = ctx.getBean(JdbcTemplate.class);
         TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
 
@@ -30,7 +30,18 @@ public class ProgramTx {
             tm.commit(transactionStatus);
         } catch (Exception e) {
             tm.rollback(transactionStatus);
+        }*/
+
+        RoleListService roleListService = ctx.getBean(RoleListService.class);
+        List<Role> roleList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            Role role = new Role();
+            role.setRoleName("role_name_" + i);
+            role.setNote("note_" + i);
+            roleList.add(role);
         }
+        int count = roleListService.insertRoleList(roleList);
+        System.out.println(count);
 
     }
 }

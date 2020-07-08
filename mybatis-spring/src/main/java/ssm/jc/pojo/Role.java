@@ -1,5 +1,8 @@
 package ssm.jc.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * FileName: Role
  * Author:   haichaoyang3
@@ -8,13 +11,14 @@ package ssm.jc.pojo;
  * History:
  * since: 1.0.0
  */
-
+@Getter
+@Setter
 public class Role {
     private int id;
     private String roleName;
     private String note;
 
-    public int getId() {
+   /* public int getId() {
         return id;
     }
 
@@ -36,5 +40,5 @@ public class Role {
 
     public void setNote(String note) {
         this.note = note;
-    }
+    }*/
 }
