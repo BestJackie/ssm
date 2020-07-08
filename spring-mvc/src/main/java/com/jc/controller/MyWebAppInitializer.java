@@ -12,11 +12,14 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * since: 1.0.0
  */
 
+/*
 public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    /**
+    */
+/**
      * @return
-     */
+     *//*
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[0];
@@ -33,3 +36,4 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 
     //TODO
 }
+*/

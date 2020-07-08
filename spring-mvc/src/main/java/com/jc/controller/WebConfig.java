@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * History:
  * since: 1.0.0
  */
-@Configuration
+/*@Configuration
 @ComponentScan(basePackages = "com.*")
 @EnableWebMvc
 public class WebConfig {
@@ -28,4 +28,4 @@ public class WebConfig {
         internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;
     }
-}
+}*/
