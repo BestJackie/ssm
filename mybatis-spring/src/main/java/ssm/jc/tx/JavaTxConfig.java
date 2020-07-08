@@ -1,3 +1,4 @@
+/*
 package ssm.jc.tx;
 
 
@@ -16,6 +17,7 @@ import javax.sql.DataSource;
 import java.util.Objects;
 import java.util.Properties;
 
+*/
 /**
  * FileName: JavaTxConfig
  * Author:   haichaoyang3
@@ -23,7 +25,8 @@ import java.util.Properties;
  * Description: 用Java配置方式实现spring数据库事务
  * History:
  * since: 1.0.0
- */
+ *//*
+
 @Configuration
 @ComponentScan
 @EnableTransactionManagement
@@ -66,3 +69,4 @@ public class JavaTxConfig implements TransactionManagementConfigurer {
 
 
 }
+*/
