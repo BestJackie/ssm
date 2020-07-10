@@ -4,9 +4,7 @@ import com.jc.pojo.Role;
 import com.jc.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
@@ -43,5 +41,17 @@ public class RoleController {
         return mv;
 
     }
+    @GetMapping(value = "getRole/{id}", params = "json")
+    public ModelAndView getJsonRoleByPath(@PathVariable(value = "id") Integer id){
+        Role role =roleService.getRole(id);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("role",role);
+        mv.setView(new MappingJackson2JsonView());
+        return mv;
+
+    }
+
+
+
 
 }

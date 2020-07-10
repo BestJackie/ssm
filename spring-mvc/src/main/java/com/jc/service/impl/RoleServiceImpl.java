@@ -6,6 +6,7 @@ import com.jc.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * FileName: RoleServiceImpl
@@ -23,5 +24,18 @@ public class RoleServiceImpl implements RoleService {
 
     public Role getRole(Integer id) {
         return roleMapper.selectByPrimaryKey(id);
+    }
+
+    public int addRoles(List<Role> roleList) {
+        int count = 0;
+        for (Role role : roleList) {
+            roleMapper.insertSelective(role);
+            count++;
+        }
+        return count;
+    }
+
+    public void addRole(Role role) {
+        roleMapper.insertSelective(role);
     }
 }
