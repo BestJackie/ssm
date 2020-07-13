@@ -34,23 +34,23 @@
                         roleName: 'Role_json_test',
                         note: 'Role_json_note'
                     }];
-                $.post({
+             /*   $.post({
                     url: "./common?json",
                     contentType: "application/json",
                     data: JSON.stringify(data),
                     success: function(){
                         alert("req success");
                     }
-                });
+                });*/
                 $.post({
-                    url: "./addRoles",
+                    url: "./addRoles?f="+ Math.random(),
                     contentType: "application/json",
                     data: JSON.stringify(roleList),
                     success: function(result){
                         alert("req success"+result.total);
                     }
                 });
-                $("#commit").click(function () {
+               /* $("#commit").click(function () {
                     let str=$("#form3").serialize();
                     $.post({
                         url: "./common",
@@ -60,7 +60,7 @@
                             alert("req success");
                         }
                     });
-                })
+                })*/
 
 
             }
