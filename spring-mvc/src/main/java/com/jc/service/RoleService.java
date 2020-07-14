@@ -9,4 +9,6 @@ public interface RoleService {
     int addRoles(List<Role> roleList);
 
     void addRole(Role role);
+
+    List<Role> getAllRoles();
 }

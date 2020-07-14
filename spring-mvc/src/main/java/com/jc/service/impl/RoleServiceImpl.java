@@ -2,6 +2,7 @@ package com.jc.service.impl;
 
 import com.jc.dao.RoleMapper;
 import com.jc.pojo.Role;
+import com.jc.pojo.RoleExample;
 import com.jc.service.RoleService;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +22,11 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     @Resource
     private RoleMapper roleMapper;
-
+    @Override
     public Role getRole(Integer id) {
         return roleMapper.selectByPrimaryKey(id);
     }
-
+    @Override
     public int addRoles(List<Role> roleList) {
         int count = 0;
         for (Role role : roleList) {
@@ -34,8 +35,13 @@ public class RoleServiceImpl implements RoleService {
         }
         return count;
     }
-
+    @Override
     public void addRole(Role role) {
         roleMapper.insertSelective(role);
+    }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return roleMapper.selectByExample(new RoleExample());
     }
 }
