@@ -13,7 +13,14 @@
     <!-- 定义扫描装载的包-->
     <context:component-scan base-package="com.*"/>
     <!-- 使用注解驱动-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.jc.message.conventer.String2RoleConventer"/>
+            </list>
+        </property>
+    </bean>
 
     <mvc:interceptors>
         <mvc:interceptor>
@@ -26,4 +33,7 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver"/>
+
+
 </beans>
