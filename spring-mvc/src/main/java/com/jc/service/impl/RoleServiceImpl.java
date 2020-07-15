@@ -44,4 +44,9 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> getAllRoles() {
         return roleMapper.selectByExample(new RoleExample());
     }
+
+    @Override
+    public int updateRole(Role role) {
+        return roleMapper.updateByPrimaryKeySelective(role);
+    }
 }

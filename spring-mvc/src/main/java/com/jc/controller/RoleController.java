@@ -4,23 +4,20 @@ import com.jc.excel.ExcelExportService;
 import com.jc.excel.ExcelView;
 import com.jc.pojo.Role;
 import com.jc.service.RoleService;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * FileName: RoleController
@@ -38,7 +35,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("getRole")
+   /* @GetMapping("getRole")
     public ModelAndView getRole(@RequestParam(value = "id", defaultValue = "1") Integer id) {
         Role role = roleService.getRole(id);
 
@@ -46,6 +43,26 @@ public class RoleController {
         mv.setViewName("roleDetails");
         mv.addObject("role", role);
         return mv;
+    }*/
+
+
+    @GetMapping("getRole")
+    @ResponseBody
+    public Role getRole(@RequestParam(value = "id", defaultValue = "1") Integer id) {
+        return roleService.getRole(id);
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public Map updateRole(Role role) {
+        Map<String, String> result = new HashMap<>(1);
+        boolean flag = roleService.updateRole(role) == 1;
+        if (flag)
+            result.put("msg","success");
+        else
+            result.put("msg","fail");
+        return result;
+
     }
 
     @GetMapping(value = "getRole", params = "json")
@@ -82,7 +99,7 @@ public class RoleController {
         ExcelView ev = new ExcelView(exportService());
         ev.setFileName("所有角色.xls");
         List<Role> roleList = roleService.getAllRoles();
-        mv.addObject("roleList",roleList);
+        mv.addObject("roleList", roleList);
         mv.setView(ev);
         return mv;
     }
@@ -101,7 +118,7 @@ public class RoleController {
 
             for (int i = 0; i < roleList.size(); i++) {
                 Role role = roleList.get(i);
-                int rowId = i+1;
+                int rowId = i + 1;
                 Row row = sheet.createRow(rowId);
                 row.createCell(0).setCellValue(role.getId());
                 row.getCell(0).setCellStyle(cellStyle);
