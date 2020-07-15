@@ -1,4 +1,4 @@
-package com.jc.message.conventer;
+package com.jc.message.converter;
 
 import com.jc.pojo.Role;
 import org.springframework.core.convert.converter.Converter;
@@ -14,7 +14,7 @@ import org.springframework.util.StringUtils;
  * since: 1.0.0
  */
 
-public class String2RoleConventer implements Converter<String, Role> {
+public class String2RoleConverter implements Converter<String, Role> {
     @Override
     public Role convert(String source) {
         if (StringUtils.isEmpty(source))

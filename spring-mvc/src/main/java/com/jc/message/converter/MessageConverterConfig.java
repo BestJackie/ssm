@@ -1,19 +1,6 @@
-package com.jc.message.conventer;
+package com.jc.message.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.format.support.FormattingConversionServiceFactoryBean;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.HandlerAdapter;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * FileName: MessageConventerConfig
@@ -26,7 +13,7 @@ import java.util.Objects;
  */
 
 @Configuration
-public class MessageConventerConfig {
+public class MessageConverterConfig {
     /*@Bean*//*("requestMappingHandlerAdapter")*//*
     public HandlerAdapter requestMappingHandlerAdapter(){
         RequestMappingHandlerAdapter requestMappingHandlerAdapter = new RequestMappingHandlerAdapter();
