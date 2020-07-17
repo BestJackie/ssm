@@ -17,7 +17,7 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <list>
-                <bean class="com.jc.message.conventer.String2RoleConventer"/>
+                <bean class="com.jc.message.converter.String2RoleConverter"/>
             </list>
         </property>
     </bean>
