@@ -15,11 +15,11 @@
     <table>
         <tr>
             <td>日期</td>
-            <td><input name="date1" type="date" value="2020-07-15" /></td>
+            <td><input name="date1" type="text" value="2020-07-15" /></td>
         </tr>
         <tr>
             <td>金额</td>
-            <td>￥<input name="amount" type="number" value="123,000.00" /></td>
+            <td>￥<input name="amount" type="text" value="123,000.00" /></td>
         </tr>
         <tr>
             <td></td>
